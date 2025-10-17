@@ -13,7 +13,7 @@ jest.mock('./UserForm', () => ({
     __esModule: true,
     default: ({ onSave, onCancel, user }: any) => (
         <div data-testid="user-form">
-            UserForm Mock - {user ? 'Edit Mode' : 'Create Mode'}
+            UserForm Mock - {user ? 'Edit User' : 'Create New User'}
         </div>
     ),
 }));
@@ -97,7 +97,7 @@ describe('UserList Component', () => {
         fireEvent.click(createButton);
 
         expect(screen.getByTestId('user-form')).toBeInTheDocument();
-        expect(screen.getByText('UserForm Mock - Create Mode')).toBeInTheDocument();
+        expect(screen.getByText('UserForm Mock - Create New User')).toBeInTheDocument();
     });
 
     test('should show form when Edit User button is clicked', async () => {
@@ -107,11 +107,11 @@ describe('UserList Component', () => {
             expect(screen.queryByText('Loading users...')).not.toBeInTheDocument();
         });
 
-        expect(screen.queryByText('UserForm Mock - Edit Mode')).not.toBeInTheDocument();
+        expect(screen.queryByText('UserForm Mock - Edit User')).not.toBeInTheDocument();
         const editButtons = screen.getAllByRole('button', { name: 'Edit' });
         fireEvent.click(editButtons[0]);
 
         expect(screen.getByTestId('user-form')).toBeInTheDocument();
-        expect(screen.getByText('UserForm Mock - Edit Mode')).toBeInTheDocument();
+        expect(screen.getByText('UserForm Mock - Edit User')).toBeInTheDocument();
     });
 });

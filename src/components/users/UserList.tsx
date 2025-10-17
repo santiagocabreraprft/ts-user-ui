@@ -145,7 +145,7 @@ const UserList: React.FC = () => {
         </tbody>
       </table>
 
-      {/* Formulario modal - Solo se muestra si showForm es true */}
+      {/* Modal Form - Only displayed when showForm is true */}
       {showForm && (
         <UserForm
           user={editingUser}
