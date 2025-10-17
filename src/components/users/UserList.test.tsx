@@ -106,10 +106,12 @@ describe('UserList Component', () => {
         await waitFor(() => {
             expect(screen.queryByText('Loading users...')).not.toBeInTheDocument();
         });
-        const createButton = screen.getByText('+ Create User');
-        fireEvent.click(createButton);
+
+        expect(screen.queryByText('UserForm Mock - Edit Mode')).not.toBeInTheDocument();
+        const editButtons = screen.getAllByRole('button', { name: 'Edit' });
+        fireEvent.click(editButtons[0]);
 
         expect(screen.getByTestId('user-form')).toBeInTheDocument();
-        expect(screen.getByText('UserForm Mock - Create Mode')).toBeInTheDocument();
+        expect(screen.getByText('UserForm Mock - Edit Mode')).toBeInTheDocument();
     });
 });
